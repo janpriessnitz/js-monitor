@@ -1,9 +1,9 @@
 'use strict'
 
 import { crypto } from 'jsrsasign';
-import { repoURL, dataURL, digestHex, stringToHex} from './util';
-import { Retriever } from './retriever';
-import { KeyManager } from './masterkeys';
+import { repoURL, dataURL, digestHex, stringToHex} from './util.js';
+import { Retriever } from './retriever.js';
+import { KeyManager } from './masterkeys.js';
 import { X509 } from 'jsrsasign';
 
 // Bit flags

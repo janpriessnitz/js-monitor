@@ -2,8 +2,8 @@
 
 import { get } from 'http';
 import { inflate } from 'zlib';
-import { Hash, digestString, digestHex, stringToHex } from './util';
-import { Cache } from './localcache';
+import { Hash, digestString, digestHex, stringToHex } from './util.js';
+import { Cache } from './localcache.js';
 
 export class Manifest {
   constructor() {

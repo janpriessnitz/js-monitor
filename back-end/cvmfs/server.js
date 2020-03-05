@@ -1,4 +1,4 @@
-import { getJSONfromRpository } from './cvmfs';
+import { getJSONfromRpository } from './cvmfs.js';
 import express from 'express';
 require('dotenv').config();
 

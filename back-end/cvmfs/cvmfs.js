@@ -1,6 +1,6 @@
-import { Repository } from "./repo";
-import { isURLvalid, lookupIPfromURL } from "./util";
-import { lookup } from "geoip-lite";
+import { Repository } from './repo.js';
+import { isURLvalid, lookupIPfromURL } from './util.js';
+import { lookup } from 'geoip-lite';
 
 export async function getJSONfromRpository(repositoryWebsite, repositoryName) {
 
