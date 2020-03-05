@@ -1,7 +1,8 @@
 'use strict';
 
-import { jsSHA } from 'jssha';
-import { crypto } from 'jsrsasign';
+// import { jsSHA } from 'jssha';
+// import { crypto } from 'jsrsasign';
+import jsrsasign from 'jsrsasign';
 import { URL } from 'url';
 import { lookup } from 'dns';
 
@@ -56,7 +57,7 @@ export function digestString(str, algorithm) {
     shake128.update(str);
     return shake128.getHash("HEX", {shakeLen: 160});
   } else {
-    return crypto.Util.hashString(str, algorithm);
+    return jsrsasign.crypto.Util.hashString(str, algorithm);
   }
 }
 
@@ -70,7 +71,7 @@ export function digestHex(hex, algorithm) {
     shake128.update(hex);
     return shake128.getHash("HEX", {shakeLen: 160});
   } else {
-    return crypto.Util.hashHex(hex, algorithm);
+    return jsrsasign.crypto.Util.hashHex(hex, algorithm);
   }
 }
 

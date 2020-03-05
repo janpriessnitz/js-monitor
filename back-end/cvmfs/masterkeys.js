@@ -1,6 +1,7 @@
 'use strict';
 
-import { KEYUTIL, BigInteger } from 'jsrsasign';
+
+import jsrsasign from 'jsrsasign';
 
 export class KeyManager {
   constructor() {
@@ -95,7 +96,7 @@ export class KeyManager {
 
 
     ];
-    this._masterKeys = this._pkcs8Keys.map((pkcs_key) => KEYUTIL.getKey(pkcs_key));
+    this._masterKeys = this._pkcs8Keys.map((pkcs_key) => jsrsasign.KEYUTIL.getKey(pkcs_key));
   }
 
   getMasterKeys() {
@@ -103,14 +104,14 @@ export class KeyManager {
   }
 
   addMasterKey(pkcs_key) {
-    this._masterKeys.push(KEYUTIL.getKey(pkcs_key));
+    this._masterKeys.push(jsrsasign.KEYUTIL.getKey(pkcs_key));
   };
 
   verifyRawWithMessageHex(key, sMsgHex, hSig) {
     hSig = hSig.replace(/[^0-9a-f]/gi, ''); 
     hSig = hSig.replace(/[ \n]+/g, "");
 
-    const biSig = new BigInteger(hSig, 16);
+    const biSig = new jsrsasign.BigInteger(hSig, 16);
 
     if (biSig.bitLength() > key.n.bitLength()) {
       console.log('hSig as BigInteger has more bits than the master key');

@@ -1,6 +1,6 @@
 import { Repository } from './repo.js';
 import { isURLvalid, lookupIPfromURL } from './util.js';
-import { lookup } from 'geoip-lite';
+import geoip from 'geoip-lite';
 
 export async function getJSONfromRpository(repositoryWebsite, repositoryName) {
 
@@ -66,7 +66,7 @@ export async function getJSONfromRpository(repositoryWebsite, repositoryName) {
         const metainfoForStratumOneJson = JSON.parse(metainfoForStratumOne)
 
         const ip = await lookupIPfromURL(stratumOneRepository._baseURL);
-        const geo = await lookup(ip);
+        const geo = await geoip.lookup(ip);
 
         stratumOne.push({
             url: stratumOneRepository._baseURL,

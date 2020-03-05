@@ -3,7 +3,7 @@
 import { get } from 'http';
 import { inflate } from 'zlib';
 import { Hash, digestString, digestHex, stringToHex } from './util.js';
-import { Cache } from './localcache.js';
+// import { Cache } from './localcache.js';
 
 export class Manifest {
   constructor() {
@@ -36,7 +36,7 @@ export class Whitelist {
 
 export class Retriever {
   constructor() {
-    this.cache = new Cache();
+    // this.cache = new Cache();
   }
 
   // Only works for http:// protocol, fails with https:// URLs

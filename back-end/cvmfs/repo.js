@@ -1,10 +1,11 @@
 'use strict'
 
-import { crypto } from 'jsrsasign';
+// import { crypto } from 'jsrsasign';
 import { repoURL, dataURL, digestHex, stringToHex} from './util.js';
 import { Retriever } from './retriever.js';
 import { KeyManager } from './masterkeys.js';
-import { X509 } from 'jsrsasign';
+// import { X509 } from 'jsrsasign';
+import jsrsasign from 'jsrsasign';
 
 // Bit flags
 export const ENTRY_TYPE = Object.freeze({
@@ -62,7 +63,7 @@ export class Repository {
     this._whitelist = await this.retriever.fetchWhitelist(this.whitelistURL, this._repoName);  
     this.certificateString = await this.retriever.fetchCertificate(this.certificateURL, this._manifest.certHash);
 
-    this._cert = new X509();
+    this._cert = new jsrsasign.X509();
     this._cert.readCertPEM(this.certificateString);
 
 
@@ -117,7 +118,7 @@ export class Repository {
     }
     
     /* verify manifest signature */
-    const signature = new crypto.Signature({alg: 'SHA1withRSA'});
+    const signature = new jsrsasign.crypto.Signature({alg: 'SHA1withRSA'});
     signature.init(this._cert.getPublicKey());
     signature.updateString(this._manifest.metadataHash.downloadHandle);
 

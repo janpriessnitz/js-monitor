@@ -1,6 +1,7 @@
 'use strict';
 
-import { LocalStorage } from 'node-localstorage';
+// import LocalStorage from 'node-'
+import { LocalStorage } from 'localstorage';
 
 class Node {
     constructor(value) {
