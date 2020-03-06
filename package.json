@@ -1,15 +1,12 @@
 {
   "name": "cvmfs-monitor",
   "version": "0.1.0",
-  "dependencies": {
-    "backend": "file:backend",
-    "frontend": "file:frontend",
-    "nodemon": "^1.19.1",
-    "@babel/node": "^7.5.5"
-  },
+  "dependencies": {},
   "scripts": {
-    "backend": "cd backend && npm run server",
-    "frontend": "cd frontend && npm run build && serve -s build -l 8080",
-    "start": "npm run backend & npm run frontend &"
+    "postinstall": "if [ x\"$CVMFS_MONITOR_MODE\" = \"xbackend\" ]; then (cd backend && npm install -s); else (cd frontend && npm install -s); fi",
+    "build": "if [ x\"$CVMFS_MONITOR_MODE\" = \"xbackend\" ]; then (cd backend && npm run build); else (cd frontend && npm run build); fi",
+    "start": "if [ x\"$CVMFS_MONITOR_MODE\" = \"xbackend\" ]; then npm run backend; else npm run frontend; fi",
+    "backend": "cd backend && npm start",
+    "frontend": "cd frontend && npm start"
   }
 }
