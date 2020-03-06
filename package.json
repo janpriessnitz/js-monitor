@@ -1,0 +1,14 @@
+{
+  "name": "cvmfs-monitor",
+  "version": "0.1.0",
+  "dependencies": {
+    "backend": "file:backend",
+    "frontend": "file:frontend",
+    "nodemon": "^1.19.1",
+    "@babel/node": "^7.5.5"
+  },
+  "scripts": {
+    "start": "cd backend && node ./cvmfs/server.js",
+    "frontend": "cd frontend && react-scripts start"
+  }
+}
