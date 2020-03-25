@@ -6,9 +6,10 @@
       "cflags_cc!": [ "-fno-exceptions" ],
       "sources": [ "libcvmfs_node.cc" ],
       "include_dirs": [
-        "<!@(node -p \"require('node-addon-api').include\")"
+        "<!@(node -p \"require('node-addon-api').include\")",
+        "."
       ],
-      "libraries": [ "/usr/lib/libcvmfs.a -luuid" ],
+      "libraries": [ "../libcvmfs.a"],
       'defines': [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ],
     }
   ]
