@@ -16,11 +16,11 @@ export function isURLvalid(url) {
 }
 
 export function repoURL(baseURL, repoName) {
-  return baseURL + '/' + repoName;
+  return baseURL + "/" + repoName;
 }
 
 export function dataURL(baseURL, repoName) {
-  return baseURL + '/' + repoName + '/data';
+  return repoURL(baseURL, repoName) + "/data";
 }
 
 export function stringToHex(input) {

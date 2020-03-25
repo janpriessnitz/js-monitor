@@ -2,7 +2,7 @@ import { Repository } from './repo.js';
 import { isURLvalid, lookupIPfromURL } from './util.js';
 import geoip from 'geoip-lite';
 
-export async function getJSONfromRpository(repositoryWebsite, repositoryName) {
+export async function getJSONfromRepository(repositoryWebsite, repositoryName) {
 
     let repository = new Repository(repositoryWebsite, repositoryName);
     await repository.connect();

@@ -1,6 +1,8 @@
 import { getJSONfromRpository } from './cvmfs.js';
 import express from 'express';
 import dotenv from 'dotenv';
+import * as handlers from './handlers.js';
+
 // a = require('dotenv').config();
 dotenv.config();
 
@@ -20,21 +22,11 @@ app.use(function (req, res, next) {
     next();
 });
 
-const port = process.env.PORT
+const port = process.env.PORT;
 app.listen(port, () => `Server running on port ${port}`);
 
-app.get(process.env.API, async (req, res) => {
-    console.log(`${req.query}`)
-    let repositoryName = req.query.name;
-    let repositoryWebsite = req.query.website
 
-    try {
-        console.log(`Fetching repository ${repositoryName} from ${repositoryWebsite}`);
-        const reposonseJSON = await getJSONfromRpository(repositoryWebsite, repositoryName);
-        // console.log("reposonseJSON",reposonseJSON)
-        res.json(reposonseJSON);
-    } catch (error) {
-        console.log(error)
-        res.status(404).send(error.message);
-    }
-});
+app.get("/api/details/:repo", handlers.details);
+app.get("/api/stat/:repo", handlers.stat);
+app.get("/api/stat/:repo/:path([^?]+)", handlers.stat);
+app.get("/api/fetch/:repo/:path([^?]+)", handlers.fetch);
