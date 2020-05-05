@@ -9,7 +9,10 @@
         "<!@(node -p \"require('node-addon-api').include\")",
         "."
       ],
-      "libraries": [ "/usr/lib64/libcvmfs.a"],
+      "libraries": [
+        "/usr/lib64/libcvmfs.a",
+        "-lcurl",
+        "-luuid"],
       'defines': [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ],
     }
   ]
