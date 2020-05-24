@@ -11,6 +11,8 @@ RUN yum install -y git npm
 WORKDIR /root
 RUN git clone https://github.com/janpriessnitz/js-monitor.git
 
+ADD https://cern.ch cache_bust
+
 WORKDIR /root/js-monitor/frontend
 RUN npm install
 RUN npm run build
