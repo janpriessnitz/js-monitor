@@ -251,13 +251,9 @@ class Details extends Component {
   componentDidMount() {
     this.setState({ isLoading: true });
     axios
-      .get(process.env.REACT_APP_PRODUCTION_API, {
+      .get(process.env.REACT_APP_PRODUCTION_API + "/" + this.props.repository.url, {
         params: {
-          name:
-            this.props.repository !== undefined
-              ? this.props.repository.url
-              : this.setState({ error: true }),
-          website:
+          repoUrl:
             this.props.repository !== undefined
               ? this.props.repository.repositoryWebsite
               : this.setState({ error: true })
