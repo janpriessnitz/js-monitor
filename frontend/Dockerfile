@@ -8,10 +8,10 @@ RUN yum install -y epel-release
 
 RUN yum install -y git npm
 
+ADD https://cern.ch cache_bust
+
 WORKDIR /root
 RUN git clone https://github.com/janpriessnitz/js-monitor.git
-
-ADD https://cern.ch cache_bust
 
 WORKDIR /root/js-monitor/frontend
 RUN npm install
